@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    console.log('======== Number ===========');
+    console.log(1);
+    console.log(1.1);
+    console.log(1.1e4); // e4 => * 10^4
+    console.log(1.1e-4); // -e4 => / 10 ^4
+    console.log(100_000_000_000_000);
+    const a = 100_000_000_000_000;
+
+    console.log(Number(1));
+    console.log(Number('1.1'));
+    console.log(Number('1.1e4'));
+    console.log(Number('11px'));
+
+    // avoid
+    // console.log(new Number(1));
+    // console.log(new Number('1.1'));
+    // console.log(new Number('11px'));
+
+    console.log(parseFloat('1.11000'));
+    console.log(parseInt('1.11000'));
+    console.log(parseInt('11px'));
+    console.log(parseInt('11', 2));
+    console.log(parseInt('11', 10));
+
+    console.log(isNaN('11px'));
+    console.log(isNaN('11'));
+    console.log(isNaN('1.1'));
+    console.log(typeof 1);
+    console.log(typeof 1.1);
+    console.log(1.1 instanceof Number);
+    console.log(1 instanceof Number);
+    console.log(Number(1) instanceof Number);
+    console.log(new Number(1) instanceof Number);
+
+    console.log((1.111).toFixed(2));
+    console.log((1.111).toPrecision(5));
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

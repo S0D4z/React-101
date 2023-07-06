@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function getData() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (Math.random() > 0.5) {
+            resolve("Here is your data");
+          } else {
+            reject("Sorry, there was an error");
+          }
+        }, 2000);
+      });
+    }
+
+    function processData(data) {
+      return new Promise((resolve) => {
+        let processedData = data.toUpperCase(); // upper_case
+        resolve(processedData);
+      });
+    }
+
+    function processData2(data) {
+      console.log(`Data received by processData2: ${data}`);
+    }
+
+    // Homework 
+    // 1.handling Promise with then 
+    // cb , call back
+    getData().then((value) => {
+        processData(value).then((value2) => {
+            processData2(value2)
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+    // 2. handling Promise with async / await
+    async function run() {
+      try {
+        const value = await getData()
+        const value2 = await processData(value)
+        processData2(value2)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    // 
+    // Promise.all([
+    //   getData(), // 1s
+    //   processData('') //2s
+    // ]).then([valueGetData, valueProcessData])
+
+    // Promise.race([
+    //   getData(),  // 1s
+    //   processData('') //2s
+    // ]).then([valueGetData, valueProcessData])
+
+  </script>
+</body>
+</html>

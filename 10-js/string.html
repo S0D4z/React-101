@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    console.log('======== String ===========');
+
+    console.log('Hello world');
+    const str = 'Pizza';
+    console.log(str + '!');
+    console.log(`
+// 
+.
+//
+${str}
+^3^
+.
+`);
+
+    console.log(str.length);
+    console.log(str.toLowerCase());
+    console.log(str.toUpperCase());
+    console.log(str[1]);
+    console.log(str[4]);
+
+    console.log(str.includes('i'));
+    console.log(str.indexOf('z'));
+    console.log(str.replace('zz', 'ss'));
+    console.log(str.replace(/zz/, 'ss'));
+    console.log(str.slice(2, 4));
+    console.log(str.split('zz'));
+    console.log(str.startsWith('P'));
+    console.log(str.startsWith('A'));
+    console.log('  45 54 5555   '.trim());
+
+    console.log(typeof str);
+    console.log(str instanceof String);
+    console.log(new String(str) instanceof String);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

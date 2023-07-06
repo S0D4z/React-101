@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    const drink = {
+      id: 'xhs8Pla',
+      name: 'Cola',
+      price: {
+        sale: 9,
+        origin: 6,
+      },
+      getPriceIncludeVat: function () {
+        return this.price.sale * 1.07;
+      },
+    };
+
+    console.log(drink.getPriceIncludeVat());
+    console.log(drink['name']);
+    console.log(drink.price.sale);
+    console.log(drink['price']['sale']);
+    console.log({ ...drink, a: 99 });
+    const drinkReference = drink;
+    drinkReference.name = 'Peach';
+
+    console.log(drink === drinkReference);
+
+    console.log({} instanceof Object);
+    console.log(new Object() instanceof Object);
+    console.log(Object() instanceof Object);
+
+    console.log(drink.hasOwnProperty('name'));
+    console.log(Object.entries(drink));
+
+    for (const key in drink) {
+      console.log(key);
+      console.log(drink[key]);
+    }
+
+    console.log(typeof drink);
+
+
+    // Removing Object Properties
+    // slow
+    delete drink.id;
+
+    drink.id = undefined;
+    if (drink.id) {
+      console.log('Has ID...');
+    }
+
+    // shallow copies
+    const drinkClone1 = Object.assign({}, drink);
+    const drinkClone2 = { ...drink };
+    console.log(drinkClone1, drinkClone2);
+
+    // deep copy
+    const drinkStringified = JSON.stringify(drink);
+    const drinkClone3 = JSON.parse(drinkStringified);
+    console.log(drinkStringified, drinkClone3);
+
+    // Merging Objects
+    const drink = {
+      id: 'xhs8Pla',
+      name: 'Lemonade',
+    };
+
+    const price = {
+      sale: 99,
+      full: 129,
+    };
+
+    const mergedDrink1 = Object.assign({}, drink, { price });
+    const mergedDrink2 = { ...drink, ...{ price } };
+    console.log(mergedDrink1, mergedDrink2);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

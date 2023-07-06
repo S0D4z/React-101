@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const drinks = ['Lemonade', 'Lime', 'Peach'];
+    const drinksRef = drinks
+
+    console.log(drinks);
+    console.log(drinks === drinksRef);
+
+    console.log(new Array('Lemonade', 'Lime', 'Peach'))
+    console.log(Array('Lemonade', 'Lime', 'Peach'))
+
+    console.log(drinks[0]);
+
+    drinks[0] = 'Cola'
+
+    console.log(drinks[0]);
+    console.log(drinks);
+
+    const drinksWithPrice = [['Lemonade', 99], ['Lime', 88], ['Peach', 10]];
+    console.log(drinksWithPrice);
+
+    console.log(drinks);
+    console.log(['Pepsi',...drinks]);
+
+    console.log(drinks.findIndex((v) => v === 'Lime'));
+    console.log(drinks.indexOf('Lime'));
+
+    const drinksWithId = [
+      {id: 1, name: 'Lemonade'},
+      {id: 2, name: 'Lime'},
+      {id: 3, name: 'Peach'},
+    ]
+
+    const found = drinksWithId.find(function (value) {
+      if (value.name === 'Peach') {
+        return true
+      }
+      return false
+    })
+
+    console.log(found);
+    console.log(drinksWithId.find((value) => {
+      if (value.name === 'Peach') {
+        return true
+      }
+      return false
+    }));
+
+    console.log(drinksWithId.find((value) => {
+        return value.name === 'Peach'
+    }));
+    console.log(drinksWithId.find((value) => value.name === 'Peach'));
+    console.log(drinksWithId.find(value => value.name === 'Peach'));
+
+
+    for (let i = 0; i < drinksWithId.length; i++) {
+      const element = drinksWithId[i];
+      console.log(element);
+    }
+
+    for (const element of drinksWithId) {
+      console.log(element);
+    }
+
+    for (const key in drinksWithId) {
+      console.log(key);
+    }
+
+    let obj =  {id: '🍔', name: 'Burger', price: 499, promotion: false, stock: true }
+    for (const key in obj) {
+      console.log(key, obj[key]);
+    }
+
+    drinksWithId.forEach((element) => {
+      console.log(element);
+    })
+
+
+    const items = [
+      {id: '🍔', name: 'Burger', price: 499, promotion: false, stock: true },
+      {id: '🍟', name: 'Fries', price: 399, promotion: false, stock: false },
+      {id: '🥤', name: 'Cola', price: 299, promotion: true, stock: true },
+    ];
+
+
+    const itemMap = items.map((item) => {
+      return {
+        id: item.id,
+        description: item.id + ' ' + item.name + '(' + item.price + ')'
+      }
+    })
+
+    console.table(itemMap);
+
+    const itemFilter = items.filter((item) => item.price > 300)
+
+    console.log(itemFilter);
+
+
+    const total = items.reduce((prev, next) => prev + next.price, 0)
+    // 0 + 499, 0
+    // 499 + 399, 499
+    // 898 + 299, 898
+    console.log(total);
+
+    // some 
+    const isPromotion = items.some((item) => item.promotion)
+    console.log(isPromotion);
+
+    // every 
+    const isStock = items.every((item) => item.stock)
+    console.log(isStock);
+
+
+    console.log(items.find(item => item.id === '🍔'));
+  </script>
+</body>
+</html>

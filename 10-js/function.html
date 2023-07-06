@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1: Function Declaration
+    function makeCar() {
+      console.log('Making car...');
+    }
+    makeCar();
+
+    // 2: Function Expression (anonymous or named)
+    const makeCarExpression = function myFunction() { };
+
+    console.log(makeCarExpression.name);
+
+    // 3: Arrow Function
+    const makeCarArrow = () => {
+      console.log('Making car inside Arrow...');
+    };
+
+    makeCarArrow();
+
+    const makeCarArrowShorthand = () => console.log('Short');
+
+    makeCarArrowShorthand();
+
+    // hoisting
+    console.log(makeCar);
+    console.log(makeCarExpression);
+    console.log(makeCarArrow);
+    console.log(makeCarArrowShorthand);
+
+    // Function Parameters and Defaults
+    // name = parameter
+    function makeCar(name = 'Porsche') {
+      // name = name || 'Porsche';
+
+      // if (!name) {
+      //   name = 'Porsche';
+      // }
+      console.log(`Making car: ${name.toUpperCase()}`);
+    }
+
+    // strings = arguments
+    makeCar('Porsche');
+    makeCar('Ferrari');
+    makeCar();
+
+    // Rest Parameters and Arguments
+    function makeCarPrice() {
+      console.log(arguments, Array.isArray(arguments));
+      const total = Array.from(arguments).reduce((prev, next) => {
+        return prev + next;
+      });
+      console.log(`Total: ${total}USD`);
+    }
+
+    makeCarPrice(11, 44, 55, 99, 66);
+
+    function makeCarPriceRest(...params) {
+      console.log(Array.isArray(params));
+      const total = params.reduce((prev, next) => prev + next);
+      console.log(`Total: ${total}USD`);
+    }
+
+    makeCarPriceRest(99, 88, 77, 11, 44);
+
+    // Function Return Values
+    function makeCarPrice(...params) {
+      const total = params.reduce((prev, next) => prev + next);
+      return total;
+    }
+
+    const makeCarPriceArrow = (...params) =>
+      params.reduce((prev, next) => prev + next);
+
+    console.log(`Total: ${makeCarPrice(11, 22, 33, 44, 55, 66)}`);
+    console.log(`Total: ${makeCarPriceArrow(99, 77, 44)}`);
+
+    // Function Closures and Scope
+    function makeCarPartID(id) {
+      const theId = `CAR_PART_${id}`;
+      return function (name) {
+        return `${theId}_${name.toUpperCase()}`;
+      };
+    }
+
+    const carPartId = makeCarPartID('x8YdsZ12');
+    console.log(carPartId('Left Door'));
+    console.log(carPartId('Right Door'));
+    console.log(carPartId('Windscreen'));
+
+    const anotherCarPartId = makeCarPartID('7hs9zSaq0');
+    console.log(anotherCarPartId('Left Door'));
+    console.log(anotherCarPartId('Right Door'));
+    console.log(anotherCarPartId('Windscreen'));
+
+    // Immediately-Invoked Function Expressions (IIFE)
+    (function () {
+      console.log('IIFE');
+    })();
+
+    (function (name) {
+      console.log(`IIFE: ${name}`);
+    })('Porsche');
+
+  
+    const carPartId1 = (function (id) {
+      const theId = `CAR_PART_${id}`;
+      return function (name) {
+        return `${theId}_${name}`;
+      };
+    })('x7H8sFf');
+
+    console.log(carPartId1('Left Door'));
+    console.log(carPartId1('Right Door'));
+    console.log(carPartId1('Windscreen'));
+
+    // Functions and Callbacks
+    function carPartId(name, fn) {
+      const theId = `CAR_PART_x8zOsl`;
+      return fn(`${theId}_${name}`);
+    }
+
+    const carPart = carPartId('Left Door', function(id) {
+      return `Car Part ID: ${id}`;
+    });
+
+    console.log(carPart);
+
+    // Functions and “this”
+    // explain this
+    // this = the object that the function is a property of (method)
+    const firstCar = { id: 'x8KszK0' };
+    const secondCar = { id: 'bc90slqa' };
+    const thirdCar = { id: 'h9sNsa' };
+
+    function carPartId(name, quantity) {
+      console.log(`${this.id}_${name}_${quantity}`);
+    }
+
+    // bind mean to attach this to the function and return a new function with this attached to it 
+    const boundThirdCar = carPartId.bind(thirdCar);
+    boundThirdCar('Windscreen', 99);
+    boundThirdCar('Exhaust', 9);
+
+    // call = c = commas means you can pass in arguments to the function
+    carPartId.call(firstCar, 'Left Door', 12);
+    // apply = a = array means you can pass in arguments to the function
+    carPartId.apply(secondCar, ['Right Door', 21]);
+  </script>
+</body>
+
+</html>

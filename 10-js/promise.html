@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // const foo = () => {
+    //   console.log('First');
+    // }
+
+    // const bar = () => {
+    //   setTimeout(() => {
+    //     console.log('Second');
+    //   }, 0)
+    // }
+
+    // const baz = () => {
+    //   console.log('Third');
+    // }
+
+    // foo()
+    // bar()
+    // baz()
+
+
+    // Promise 
+    // ✅ fulfilled
+    // ❌ rejected
+    // ⏰ pending
+
+    const resolvedPromise = Promise.resolve('Hello')
+    resolvedPromise.then((value) => {
+      console.log(value);
+    })
+
+    const rejectedPromise = Promise.reject('Error')
+    rejectedPromise.then((value) => {
+      console.log('Success: ', value);
+    }).catch((error) => {
+      console.log('Error: ', error);
+    })
+
+    const promiseA = new Promise((resolve, reject) => {
+      resolve('World')
+    })
+    promiseA.then((v) => {
+      console.log(v);
+    }).catch((error) => {
+      console.log('Error: ', error);
+    })
+
+    Promise.resolve(43)
+      .then(v => v * 2)
+      .then(v => Promise.reject(v))
+      .then(v => Promise.resolve(v * 1000))
+      .then((v) => {
+        console.log(v);
+      }).catch((error) => {
+        console.log('Error: ', error);
+      })
+
+    // async/await
+    const promiseB = new Promise((resolve, reject) => {
+      resolve('111')
+    })
+
+    async function run() {
+      const v = await promiseB
+      console.log(v);
+    }
+
+    run()
+  </script>
+</body>
+</html>

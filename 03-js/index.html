@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+  </script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" name="title" id="title">
+    <button id="submit">submit</button>
+  </div>
+  <script>
+    var app = document.getElementById('app')
+    var titleInput = document.getElementById('title')
+    var submitButton = document.getElementById('submit')
+    var ul = document.createElement('ul')
+    var liHome = document.createElement('li')
+    liHome.innerHTML = 'Home'
+    ul.appendChild(liHome)
+
+    submitButton.addEventListener('click', function() {
+      var li = document.createElement('li')
+      li.innerHTML = titleInput.value
+      titleInput.value = ''
+      ul.appendChild(li)
+    })
+
+    app.appendChild(ul)
+    console.log(app)
+  </script>
+  <noscript>
+    Your browser no javascript
+  </noscript>
+</body>
+</html>
